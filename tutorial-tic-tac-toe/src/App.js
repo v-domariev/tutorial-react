@@ -2,13 +2,11 @@ import logo from './logo.svg';
 import './App.css';
 import { Square } from './component/Square';
 import { UsernameTitle } from './component/UsernameTitle';
+import { Board } from './component/board/Board';
 // import './component/Square';
 
 function App() {
-  let row = [];
-  for (let i = 0; i < 3; i++) {
-    row.push(<Square></Square>);
-  }
+
   // }
   return (
     <div className="App">
@@ -16,10 +14,8 @@ function App() {
         Hi!
         {/* <button className="square">X</button> */}
         {/* { */}
-        <div className="board-row">{row}</div>
-        <div className="board-row">{row}</div>
-        <div className="board-row">{row}</div>
-        // <Square></Square>
+        {/* <Square></Square> */}
+        <Board></Board>
         <UsernameTitle></UsernameTitle>
         {/* {new Square()} */}
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
