@@ -5,12 +5,21 @@ import { UsernameTitle } from './component/UsernameTitle';
 // import './component/Square';
 
 function App() {
+  let row = [];
+  for (let i = 0; i < 3; i++) {
+    row.push(<Square></Square>);
+  }
+  // }
   return (
     <div className="App">
       <header className="App-header">
         Hi!
         {/* <button className="square">X</button> */}
-        <Square></Square>
+        {/* { */}
+        <div className="board-row">{row}</div>
+        <div className="board-row">{row}</div>
+        <div className="board-row">{row}</div>
+        // <Square></Square>
         <UsernameTitle></UsernameTitle>
         {/* {new Square()} */}
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
