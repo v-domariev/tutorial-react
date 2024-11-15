@@ -3,7 +3,7 @@ export function Board() {
 
     let row = [];
     for (let i = 0; i < 3; i++) {
-        row.push(<Square value={i} ></Square >);
+        row.push(<Square></Square >);
     }
 
     return <>
