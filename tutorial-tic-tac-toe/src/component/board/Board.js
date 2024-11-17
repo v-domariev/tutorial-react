@@ -3,12 +3,18 @@ import { Square } from "../Square";
 export function Board() {
 
 
+    const [xIsNext, setXIsNext] = useState(true);
     const [squares, setSquares] = useState(Array(9).fill(null));
 
     function handleClick(indexSqueare) {
         const nextSquares = squares.slice();
-        nextSquares[indexSqueare] = "X";
+        if (nextSquares[indexSqueare]) {
+            return;
+        }
+
+        nextSquares[indexSqueare] = xIsNext ? "X" : "O";
         setSquares(nextSquares);
+        setXIsNext(!xIsNext);
     }
 
     let row = [];
