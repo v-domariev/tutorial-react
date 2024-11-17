@@ -1,8 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
-import { Square } from './component/Square';
 import { UsernameTitle } from './component/UsernameTitle';
-import { Board } from './component/board/Board';
+import { Game } from './component/game/Game';
 // import './component/Square';
 
 function App() {
@@ -15,7 +13,8 @@ function App() {
         {/* <button className="square">X</button> */}
         {/* { */}
         {/* <Square></Square> */}
-        <Board></Board>
+        {/* <Board></Board> */}
+        <Game></Game>
         <UsernameTitle></UsernameTitle>
         {/* {new Square()} */}
         {/* <img src={logo} className="App-logo" alt="logo" /> */}

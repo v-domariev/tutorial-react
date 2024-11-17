@@ -1,1 +1,1 @@
-Stopped at: https://react.dev/learn/tutorial-tic-tac-toe#storing-a-history-of-moves
+Stopped at: https://react.dev/learn/tutorial-tic-tac-toe#showing-the-past-moves
