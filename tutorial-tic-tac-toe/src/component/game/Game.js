@@ -4,27 +4,31 @@ import { Board } from "../board/Board";
 export function Game() {
     const [xIsNext, setXIsNext] = useState(true);
     const [history, setHistory] = useState([Array(9).fill(null)]);
-    const currentSquares = history[history.length - 1];
+    const [currentMove, setCurrentMove] = useState(0);
+    const currentSquares = history[currentMove];
 
     function handlePlay(nextSquares) {
 
         // let historyCopy = history.slice();
         // historyCopy.push(nextSquares);
-        setHistory([...history, nextSquares]);
+        let nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
+
+        setHistory(nextHistory);
+        setCurrentMove(nextHistory.length - 1);
         setXIsNext(!xIsNext);
     }
 
     function jumpTo(nextMove) {
-        if (history.length == 0) {
-            return;
-        }
-        let xIsNextCopy = xIsNext;
-        for (let i = history.length - nextMove; i >= 0; i--) {
-            xIsNextCopy = !xIsNextCopy;
-        }
-        setXIsNext(xIsNextCopy);
-        const historyJumpedTo = history.slice(0, nextMove);
-        setHistory(historyJumpedTo);
+        // if (history.length == 0) {
+        //     return;
+        // }
+        // let xIsNextCopy = xIsNext;
+        // for (let i = history.length - nextMove; i >= 0; i--) {
+        //     xIsNextCopy = !xIsNextCopy;
+        // }
+        // const historyJumpedTo = history.slice(0, nextMove);
+        setCurrentMove(nextMove);
+        setXIsNext(xIsNext % 2 === 0);
     }
 
     const moves = history.map((squares, move) => {
@@ -35,7 +39,7 @@ export function Game() {
             description = 'Go to game start';
         }
         return (
-            <li>
+            <li key={move}>
                 <button onClick={() => jumpTo(move)}>{description}</button>
             </li>
         );
