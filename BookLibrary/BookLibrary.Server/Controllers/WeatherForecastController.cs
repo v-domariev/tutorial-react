@@ -2,10 +2,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BookLibrary.Server.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class WeatherForecastController : BaseController
     {
+        protected override string EnpointDescription => "WeatherForecastController: returns weather forecast sample data.";
+
         private static readonly string[] Summaries =
         [
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
