@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import { BackendHealthCheckButton } from './components/backend_health_check_button';
 
 interface Forecast {
     date: string;
@@ -37,12 +38,13 @@ function App() {
                 )}
             </tbody>
         </table>;
-
+    const healthCheckButton = <BackendHealthCheckButton />;
     return (
         <div>
             <h1 id="tableLabel">Weather forecast</h1>
             <p>This component demonstrates fetching data from the server.</p>
             {contents}
+            {healthCheckButton}
         </div>
     );
 
