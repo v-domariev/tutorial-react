@@ -7,7 +7,7 @@ type DecreaseButtonProps = {
 export function DecreaseButton({ setCount }: DecreaseButtonProps) {
     function decreaseValueHandler() {
         setCount((prev) => {
-            const temp = prev;
+            // vat temp = prev;
             return prev - 1;
         }
         );
