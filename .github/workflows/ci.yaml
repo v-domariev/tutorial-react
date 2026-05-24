@@ -15,7 +15,7 @@ jobs:
 
         defaults:
             run:
-                working-directory: .\BookLibrary\booklibrary.client
+                working-directory: ./BookLibrary/booklibrary.client
         steps:
             - name: "Checkout repository - lol"
               uses: actions/checkout@v5 # v5 already published
