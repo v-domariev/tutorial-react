@@ -12,6 +12,7 @@ export function BackendHealthCheckButton() {
 
     function handleCheckBackend() {
         console.log('Backend click!');
+
         setBackendHealthStatus('Backend is alive!');
     }
 }

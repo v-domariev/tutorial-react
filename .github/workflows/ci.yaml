@@ -1,0 +1,36 @@
+name: React Vite app CI
+
+#1 Triggers
+
+on:
+    push:
+        branches: [main, master, feature/*]
+    pull_request:
+        branches: [main, master, feature/*]
+
+#2 Jobs
+jobs:
+    build-and-test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: "Checkout repository - lol"
+              uses: actions/checkout@v4 # v5 already published
+
+            - name: "Set up Node.js"
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: "npm"
+
+            - name: "Install dependecies"
+              run: npm ci
+
+            - name: "Run linter"
+              run: npm run lint --if-present
+
+            - name: "Run tests"
+              run: npm test --if-present
+
+            - name: "Build project"
+              run: npm run build
