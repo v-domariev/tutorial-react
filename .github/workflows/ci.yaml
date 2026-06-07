@@ -1,22 +1,22 @@
-name: React Vite app CI
-
-#1 Triggers
-
-on:
-    push:
-        branches: [main, master, feature/*]
-    pull_request:
-        branches: [main, master, feature/*]
-
-#2 Jobs
-jobs:
-    build-and-test:
-        runs-on: ubuntu-latest
-
-        defaults:
-            run:
-                working-directory: ./BookLibrary/booklibrary.client
-        steps:
+#name: React Vite app CI
+#
+##1 Triggers
+#
+#on:
+#    push:
+#        branches: [main, master, feature/*]
+#    pull_request:
+#        branches: [main, master, feature/*]
+#
+##2 Jobs
+#jobs:
+#    build-and-test:
+#        runs-on: ubuntu-latest
+#
+#        defaults:
+#            run:
+#                working-directory: ./BookLibrary/booklibrary.client
+#        steps:
 #            - name: "Checkout repository - lol"
 #              uses: actions/checkout@v5 # v5 already published
 #
