@@ -1,0 +1,58 @@
+name: .NET Web API CI/CD
+
+on:
+  push:
+    branches: [ main, master, "feature/*" ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    # UPDATE THIS to point to the folder containing your .sln or .csproj file
+    defaults:
+      run:
+        working-directory: ./BookLibrary/BookLibrary.Server 
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 1. Install the .NET SDK (Required for building/compiling)
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x' # Change to '9.0.x' if you are using .NET 9
+
+      # 2. Cache NuGet packages to speed up future workflow runs
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj', '**/*.sln') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      # 3. Restore dependencies
+      - name: Restore dependencies
+        run: dotnet restore
+
+      # 4. Build the project in Release mode (without re-restoring)
+      - name: Build Web API
+        run: dotnet build --configuration Release --no-restore
+
+      # 5. Run Automated Tests (if you have a test project)
+      - name: Run Tests
+        run: dotnet test --configuration Release --no-build --verbosity normal --if-present
+
+      # 6. Publish the app (compiles into a self-contained deployable folder)
+      - name: Publish Web API
+        run: dotnet publish --configuration Release --no-build --output ./publish-output
+
+      # 7. Upload the published binaries as a GitHub Artifact
+      - name: Upload API Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dotnet-webapi-production-release
+          path: ./BookLibrary/BookLibrary.Server/publish-output/
