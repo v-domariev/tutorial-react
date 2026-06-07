@@ -13,7 +13,7 @@ jobs:
     # UPDATE THIS to point to the folder containing your .sln or .csproj file
     defaults:
       run:
-        working-directory: ./BookLibrary/BookLibrary.Server 
+        working-directory: . # ./BookLibrary/BookLibrary.Server 
 
     steps:
       - name: Checkout repository
